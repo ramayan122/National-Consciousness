@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!--
+  ملاحظات قبل الرفع على GitHub:
+  1) ضعي الصور في نفس مجلد هذا الملف بالأسماء التالية:
+       mohamed.png  (صورة الأمير محمد بن سلمان)
+       salman.png   (صورة الملك سلمان)
+     إن كان امتداد الصورة غير png (مثل jpg أو webp) غيّري الامتداد في وسمي <img> أدناه.
+     وأفضل صورة بخلفية شفافة (PNG) لتظهر بارزة فوق البطاقة كما في التصميم.
+  2) افتحي موقع هيئة الخبراء وانسخي رابط صفحة النظام الأساسي للحكم بالتحديد وضعيه في قسم المصادر.
+  3) سمّي الملف index.html عند الرفع ليفتح تلقائيًا في GitHub Pages.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>واجبٌ وطن</title>
+<meta name="description" content="موقع تعريفي بالمادة الرابعة والثلاثين من النظام الأساسي للحكم في المملكة العربية السعودية، ودور وحدة الشعب في حماية الوطن.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0b5d3b;
+    --green-dark:#073d27;
+    --green-soft:#e6f2ec;
+    --gold:#b8923a;
+    --gold-soft:#e9d9ad;
+    --ink:#1c2a24;
+    --muted:#55645c;
+    --bg:#f7faf8;
+    --card:#ffffff;
+    --line:#d8e5dd;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{
+    font-family:"Tajawal","Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.95;font-size:17px;
+  }
+  a{color:var(--green)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+
+  /* الشريط العلوي */
+  header.top{
+    position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+  }
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
+  .brand{font-weight:800;color:var(--green);font-size:20px;text-decoration:none;white-space:nowrap}
+  nav ul{list-style:none;display:flex;gap:4px;flex-wrap:wrap}
+  nav a{
+    display:block;padding:6px 12px;border-radius:999px;text-decoration:none;
+    color:var(--ink);font-size:15px;font-weight:500;
+  }
+  nav a:hover,nav a:focus-visible{background:var(--green-soft);color:var(--green-dark)}
+
+  /* الواجهة */
+  .hero{
+    background:linear-gradient(160deg,var(--green-dark),var(--green) 70%);
+    color:#fff;text-align:center;padding:72px 0 80px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:6px;
+    background:linear-gradient(90deg,var(--gold),#e3c77d,var(--gold));
+  }
+  .hero .tag{
+    display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:999px;
+    padding:4px 16px;font-size:14px;margin-bottom:18px;color:#e9f4ee;
+  }
+  .hero h1{font-size:clamp(38px,7vw,64px);font-weight:800;line-height:1.3;margin-bottom:10px}
+  .hero p.sub{font-size:clamp(17px,2.6vw,21px);color:#dcefe5;max-width:640px;margin:0 auto 28px}
+  .btn{
+    display:inline-block;background:#fff;color:var(--green-dark);font-weight:700;
+    padding:11px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;
+    font-family:inherit;font-size:16px;
+  }
+  .btn:hover,.btn:focus-visible{background:#f1e6c8}
+
+  /* الأقسام */
+  section{padding:56px 0}
+  section.tint{background:var(--green-soft)}
+  h2{font-size:clamp(26px,4.5vw,34px);color:var(--green-dark);margin-bottom:8px;font-weight:800}
+  h2::after{content:"";display:block;width:64px;height:4px;border-radius:4px;background:var(--gold);margin-top:8px}
+  .lead{color:var(--muted);margin:14px 0 24px;max-width:760px}
+  p+p{margin-top:14px}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;box-shadow:0 2px 10px rgba(11,93,59,.05);
+  }
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .card h3{color:var(--green);font-size:20px;margin-bottom:6px}
+  .card .ico{font-size:30px;line-height:1;margin-bottom:8px}
+
+  blockquote.article{
+    background:#fff;border-right:6px solid var(--gold);border-radius:var(--radius);
+    padding:22px 26px;font-size:21px;font-weight:700;color:var(--green-dark);
+    box-shadow:0 2px 10px rgba(11,93,59,.06);
+  }
+  blockquote.article small{display:block;margin-top:8px;font-size:14px;color:var(--muted);font-weight:500}
+
+  .callout{
+    background:#fff8e6;border:1px solid #ecd9a3;border-radius:var(--radius);
+    padding:18px 22px;margin-top:22px;
+  }
+
+  /* بطاقات الأقوال المميزة */
+  section#quotes{
+    background:linear-gradient(180deg,#fbf6e8 0%,var(--bg) 100%);
+    overflow:hidden;
+  }
+  .feature{
+    position:relative;margin-top:150px;background:#fff;
+    border:2px solid var(--gold-soft);border-radius:32px;
+    box-shadow:0 8px 28px rgba(184,146,58,.18);
+    padding:34px 36px;display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:center;
+  }
+  .feature.flip{grid-template-columns:1fr 270px}
+  .feature.flip .photo{order:2}
+  .feature .photo{align-self:end;margin-top:-150px;margin-bottom:-34px}
+  .feature .photo img{
+    display:block;width:100%;height:auto;max-height:440px;object-fit:contain;
+    -webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);
+            mask-image:linear-gradient(to bottom,#000 80%,transparent);
+  }
+  .feature.no-photo{grid-template-columns:1fr;margin-top:28px}
+  .feature h3{font-size:26px;color:var(--green-dark);line-height:1.5}
+  .feature .role{color:var(--gold);font-weight:700;margin-bottom:6px}
+  .feature .about{color:var(--muted)}
+  .feature blockquote{
+    margin-top:16px;border-inline-start:5px solid var(--gold);padding:6px 18px;
+    font-size:22px;font-weight:700;color:var(--green-dark);line-height:1.8;
+  }
+  .feature .src{display:block;margin-top:8px;font-size:14px;color:var(--muted);font-weight:500}
+
+  /* خطوات التحقق */
+  ol.steps{list-style:none;counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  ol.steps li{
+    counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px 18px 18px;position:relative;
+  }
+  ol.steps li::before{
+    content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+    background:var(--green);color:#fff;font-weight:800;margin-bottom:8px;
+  }
+  ol.steps strong{display:block;color:var(--green-dark)}
+
+  /* المصادر */
+  ul.src-list{list-style:none;display:grid;gap:12px}
+  ul.src-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  ul.src-list a{font-weight:700;word-break:break-word}
+  ul.src-list span{display:block;color:var(--muted);font-size:15px}
+
+  .ph{background:#fff3b0;border-bottom:2px dotted #b8923a;padding:0 4px;border-radius:3px}
+
+  footer{background:var(--green-dark);color:#cfe3d8;text-align:center;padding:30px 0;font-size:15px}
+  footer strong{color:#fff}
+  footer .names{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:8px}
+
+  @media (max-width:760px){
+    .feature,.feature.flip{grid-template-columns:1fr;padding:26px 22px;margin-top:120px}
+    .feature.flip .photo{order:0}
+    .feature .photo{margin:-130px auto 0;max-width:230px}
+    .feature h3{font-size:23px}
+    .feature blockquote{font-size:19px}
+  }
+  @media (max-width:640px){
+    header.top .wrap{flex-direction:column;padding:8px 18px}
+    nav ul{justify-content:center}
+    nav a{padding:4px 10px;font-size:14px}
+    html{scroll-padding-top:110px}
+    .hero{padding:52px 0 60px}
+    section{padding:40px 0}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">واجبٌ وطن</a>
+    <nav aria-label="التنقل الرئيسي">
+      <ul>
+        <li><a href="#about">عن الموقع</a></li>
+        <li><a href="#article">المادة 34</a></li>
+        <li><a href="#quotes">أقوال عن الوطن</a></li>
+        <li><a href="#challenge">المآرب والأطماع</a></li>
+        <li><a href="#unity">وحدتنا</a></li>
+        <li><a href="#verify">تحقق</a></li>
+        <li><a href="#sources">المصادر</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- الواجهة -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="tag">مبادرة تطوعية للتوعية الوطنية</span>
+      <h1>واجبٌ وطن</h1>
+      <p class="sub">المادة الرابعة والثلاثون من النظام الأساسي للحكم في المملكة العربية السعودية، ودور وحدتنا الوطنية في حماية وطننا.</p>
+      <a class="btn" href="#article">اقرأ المادة</a>
+    </div>
+  </div>
+
+  <!-- عن الموقع -->
+  <section id="about">
+    <div class="wrap">
+      <h2>عن الموقع</h2>
+      <p class="lead">أُعدّ هذا الموقع ضمن العمل التطوعي في الثانوية الخمسين بمكة المكرمة لتعريف الطلاب والمجتمع بمضمون المادة الرابعة والثلاثين، وبأن حماية الوطن تبدأ من وحدة صفنا ووعي كل فرد منا.</p>
+
+      <div class="card">
+        <p>تنص المادة الرابعة والثلاثون من النظام الأساسي للحكم على أن «الدفاع عن العقيدة الإسلامية والمجتمع والوطن واجب على كل مواطن». وهي مسؤولية مشتركة يشارك فيها الجميع، كلٌّ من موقعه.</p>
+        <p>وأول ما يتعرض له أي مجتمع متماسك هو وحدته. فمن تحدوهم المآرب والأطماع يدركون أن الحصون المتماسكة يصعب اختراقها من الخارج، فيحاولون أولًا زعزعة الصف من الداخل بالشائعات وبث الفرقة وإضعاف الثقة بين أفراد المجتمع، أملًا في تحقيق نصر موهوم إذا ضعف الداخل. غير أن وعي المواطن ووحدة الصف كفيلان بإفشال هذه المحاولات قبل أن تبلغ مرادها.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- المادة 34 -->
+  <section id="article" class="tint">
+    <div class="wrap">
+      <h2>المادة الرابعة والثلاثون</h2>
+      <p class="lead">فيما يلي مضمون المادة، وللاطلاع على نصها الرسمي الكامل راجع المصادر في أسفل الصفحة.</p>
+
+      <blockquote class="article">
+        «الدفاع عن العقيدة الإسلامية والمجتمع والوطن واجب على كل مواطن»
+        <small>من المادة 34، النظام الأساسي للحكم (الأمر الملكي رقم أ/90 وتاريخ 27/8/1412هـ)</small>
+      </blockquote>
+
+      <div class="grid" style="margin-top:20px">
+        <div class="card">
+          <div class="ico">🛡️</div>
+          <h3>واجب على كل مواطن</h3>
+          <p>الخطاب في المادة عام، فلا يخص فئة دون أخرى. الجميع شركاء في حماية العقيدة والمجتمع والوطن.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🏘️</div>
+          <h3>المجتمع في قلب المادة</h3>
+          <p>ذكرت المادة «المجتمع» بين ما يُدافع عنه، فسلامة النسيج الاجتماعي وتماسكه جزء من حماية الوطن.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🤝</div>
+          <h3>الوحدة الوطنية في النظام</h3>
+          <p>تتصل المادة بالمادة 12 التي تجعل تعزيز الوحدة الوطنية واجبًا، وتمنع الدولة كل ما يؤدي إلى الفرقة والفتنة والانقسام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- أقوال عن الوطن والشعب -->
+  <section id="quotes">
+    <div class="wrap">
+      <h2>أقوال عن الوطن والشعب</h2>
+      <p class="lead">كلمات قصيرة من قادة المملكة تؤكد أن قوة الوطن في تماسك أبنائه وثباتهم.</p>
+
+      <!-- الأمير محمد بن سلمان -->
+      <article class="feature">
+        <div class="photo">
+          <img src="mohamed.png" alt="صورة الأمير محمد بن سلمان" loading="lazy"
+               onerror="this.closest('.feature').classList.add('no-photo');this.parentNode.remove()">
+        </div>
+        <div>
+          <h3>الأمير محمد بن سلمان</h3>
+          <div class="role">ولي العهد</div>
+          <p class="about">شبّه همة أبناء الوطن بجبل طويق في شموخه وثباته، فالشعب المتماسك هو الحصن الأول للوطن.</p>
+          <blockquote>
+            «همة السعوديين مثل جبل طويق»
+            <span class="src">من كلمته في مؤتمر مبادرة مستقبل الاستثمار بالرياض، 2018م</span>
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- الملك سلمان -->
+      <article class="feature flip">
+        <div class="photo">
+          <img src="salman.png" alt="صورة الملك سلمان بن عبد العزيز" loading="lazy"
+               onerror="this.closest('.feature').classList.add('no-photo');this.parentNode.remove()">
+        </div>
+        <div>
+          <h3>الملك سلمان بن عبد العزيز</h3>
+          <div class="role">خادم الحرمين الشريفين</div>
+          <p class="about">أكد أن من راهن على زعزعة استقرار الوطن خاب رهانه، لأن الولاء الوطني لدى أبنائه أقوى من كل محاولة.</p>
+          <blockquote>
+            «كل المراهنين على زعزعة استقرار المملكة خسروا من الجولة الأولى»
+            <span class="src">من كلمته بمناسبة اليوم الوطني، 2013م (حين كان وليًا للعهد)</span>
+          </blockquote>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- المآرب والأطماع -->
+  <section id="challenge" class="tint">
+    <div class="wrap">
+      <h2>المآرب والأطماع: كيف تُستهدف المجتمعات؟</h2>
+      <p class="lead">لا تبدأ محاولات الإضعاف دائمًا بالسلاح، بل تبدأ غالبًا بما يفرّق القلوب ويربك العقول.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="ico">📣</div>
+          <h3>الشائعات</h3>
+          <p>أخبار مجهولة المصدر تُصاغ لتثير الخوف أو الغضب، وتنتشر أسرع من الحقيقة إن لم نتثبت منها.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🧩</div>
+          <h3>بث الفرقة</h3>
+          <p>تضخيم الخلافات الصغيرة ومحاولة وضع الناس في معسكرات متنافرة، والنظام يمنع كل ما يؤدي إلى الفرقة والفتنة والانقسام.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🔍</div>
+          <h3>إضعاف الثقة</h3>
+          <p>التشكيك المستمر في المؤسسات وفي بعضنا بعضًا، حتى يفقد المجتمع تماسكه وقدرته على مواجهة الأزمات.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>الخلاصة:</strong> المجتمع الواعي المتماسك هو أصعب هدف على أصحاب المآرب والأطماع، ولهذا كانت وحدة الصف جزءًا أصيلًا من الدفاع عن الوطن.
+      </div>
+    </div>
+  </section>
+
+  <!-- وحدتنا -->
+  <section id="unity">
+    <div class="wrap">
+      <h2>كيف نحافظ على وحدتنا؟</h2>
+      <p class="lead">الوحدة الوطنية تُبنى بتصرفات يومية بسيطة، وكلٌّ منا يستطيع أن يكون له دور.</p>
+      <div class="grid">
+        <div class="card"><div class="ico">🕊️</div><h3>نبذ الفرقة</h3><p>تجنب التصنيفات والخصومات التي تفرّق أبناء المجتمع الواحد.</p></div>
+        <div class="card"><div class="ico">💬</div><h3>الحوار بلطف</h3><p>الاختلاف في الرأي طبيعي، وأسلوبنا فيه هو ما يحفظ الود بيننا.</p></div>
+        <div class="card"><div class="ico">🧠</div><h3>الوعي</h3><p>فهم محاولات التأثير وعدم الانسياق وراء كل ما يُتداول.</p></div>
+        <div class="card"><div class="ico">🌱</div><h3>التطوع المشترك</h3><p>العمل التطوعي يجمع الناس على الخير ويقوّي الروابط بينهم.</p></div>
+        <div class="card"><div class="ico">🏛️</div><h3>الثقة بالمؤسسات</h3><p>الرجوع إلى الجهات الرسمية في الأخبار والمعلومات بدل المصادر المجهولة.</p></div>
+        <div class="card"><div class="ico">🇸🇦</div><h3>الاعتزاز بالوطن</h3><p>حب الوطن والاعتزاز به وبتاريخه يجمعنا مهما اختلفت مناطقنا واهتماماتنا.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- تحقق -->
+  <section id="verify" class="tint">
+    <div class="wrap">
+      <h2>تحقق قبل أن تنشر</h2>
+      <p class="lead">أربع خطوات سريعة تحمي مجتمعك من الشائعات.</p>
+      <ol class="steps">
+        <li><strong>اعرف المصدر</strong>هل الخبر منسوب لجهة معروفة أم لحساب مجهول؟</li>
+        <li><strong>راجع الجهة الرسمية</strong>ابحث عنه في حساب الجهة المعنية أو موقعها الرسمي.</li>
+        <li><strong>انتبه للتاريخ</strong>كثير من الأخبار القديمة تُعاد نشرها وكأنها جديدة.</li>
+        <li><strong>إن شككت فتوقف</strong>عدم المشاركة أفضل من نشر خبر قد يكون كاذبًا.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- المصادر -->
+  <section id="sources">
+    <div class="wrap">
+      <h2>المصادر</h2>
+      <p class="lead">للحصول على النصوص الرسمية الكاملة، يُنصح بالرجوع إلى المصادر الوطنية التالية.</p>
+      <ul class="src-list">
+        <li>
+          <a href="https://laws.boe.gov.sa" target="_blank" rel="noopener">هيئة الخبراء بمجلس الوزراء، المصدر الرسمي لنصوص الأنظمة السعودية</a>
+          <span>ابحث فيه عن «النظام الأساسي للحكم»، وافتح المادة 34 والمادة 12.</span>
+        </li>
+        <li>
+          <a href="https://www.my.gov.sa" target="_blank" rel="noopener">بوابة المملكة العربية السعودية الوطنية (my.gov.sa)</a>
+          <span>قسم الأنظمة واللوائح والسياسات.</span>
+        </li>
+        <li>
+          <a href="https://fac.ksu.edu.sa/sites/default/files/lnzm_lssy_llhkm_0.pdf" target="_blank" rel="noopener">نسخة من النظام الأساسي للحكم منشورة على موقع جامعة الملك سعود (PDF)</a>
+          <span>نسخة مرجعية للقراءة، والأصل المعتمد هو ما تنشره هيئة الخبراء.</span>
+        </li>
+        <li>
+          <a href="https://saudipedia.com/ما-المقصود-بهمة-طويق؟" target="_blank" rel="noopener">الموسوعة السعودية: ما المقصود بهمة طويق؟</a>
+          <span>مصدر عبارة الأمير محمد بن سلمان عن همة السعوديين.</span>
+        </li>
+        <li>
+          <a href="https://www.aljazeera.net/news/2013/9/22/%d9%88%d9%84%d9%8a-%d8%b9%d9%87%d8%af-%d8%a7%d9%84%d8%b3%d8%b9%d9%88%d8%af%d9%8a%d8%a9-%d8%a7%d9%84%d9%85%d8%b1%d8%a7%d9%87%d9%86%d9%88%d9%86-%d8%b9%d9%84%d9%89-%d8%b2%d8%b9%d8%b2%d8%b9%d8%a9" target="_blank" rel="noopener">تقرير عن كلمة ولي العهد الأمير سلمان بن عبد العزيز بمناسبة اليوم الوطني 2013م</a>
+          <span>وللنص الأصلي يُرجع إلى وكالة الأنباء السعودية <a href="https://www.spa.gov.sa" target="_blank" rel="noopener">واس</a>.</span>
+        </li>
+        <li>
+          <span class="ph">[ضعي هنا الرابط المباشر لصفحة النظام الأساسي للحكم في موقع هيئة الخبراء بعد فتحها ونسخه من شريط العنوان]</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>واجبٌ وطن</strong>، عمل تطوعي</p>
+    <div class="names">
+      <span>إعداد: <strong>راما خبيب عبد الله</strong></span>
+      <span>الثانوية الخمسون بمكة المكرمة</span>
+      <span>مديرة المدرسة: أمل المولد</span>
+      <span>إشراف المعلمة: أميمة</span>
+    </div>
+    <p style="margin-top:10px">هذا الموقع تعريفي وليس نصًا نظاميًا، والمرجع عند الاستشهاد هو النص الرسمي المنشور.</p>
+  </div>
+</footer>
+
+</body>
+</html>
